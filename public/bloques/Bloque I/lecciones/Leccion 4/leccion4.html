@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Leccion 4</title>
+	<link rel="icon" href="img/icon.ico">
+    <link rel="stylesheet" href="../../../../assets/css/leapstrap/leapstrap.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/estilos.css">    
+	<link rel="stylesheet" href="https://js.arcgis.com/4.1/esri/css/main.css">
+    <script src="js/librerias/jquery-3.1.1.js"></script>
+    <script src="js/responsivevoice.js"></script>
+    <script src="js/threejs.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/OBJLoader.js"></script>
+	<script src="js/leccion4.js"></script>
+    <script src="js/avion.js"></script>
+    <script src="js/satelite.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="../../../../assets/js/librerias/leap-0.6.4.js"></script>
+    <script src="../../../../assets/js/librerias/leapstrap.js"></script> 
+    <script src="../../../../assets/js/mapi-leap.js"></script> 
+</head>
+<body onload="getObjetivo();">
+	<ul class="topnav" id="mytopnav">
+  		<li id="menu" class="leap-interactive" onclick="openNav()">&#9776;</li>
+  		<li id="leccion">Leccion 4</li>
+  		<li id="titulo">Nuevas formas de ver los espacios geográficos</li>
+        <li id="pLeccion">Puntos:</li>
+        <li id="puntos">0</li>
+  		<li id="user"></li>
+	</ul>
+	<div id="myNav" class="overlay">
+  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  		<div class="overlay-content">
+    		<a class="leap-interactive" href="../../index.html"><i class="fa fa-list" aria-hidden="true"></i> Leccion</a>
+    		<a class="leap-interactive" href="../../../../indice.html"><i class="fa fa-book" aria-hidden="true"></i> Indice</a>
+    		<a class="leap-interactive" href="../../../../index.html"><i class="fa fa-home" aria-hidden="true"></i> Home </a>
+ 		 </div>
+	</div>
+	<div id="app">
+		<div id="viewDiv" class="leap-interactive"></div>
+	    <div id="informacion">
+	    	<h1 style="font-size: 30px;" align="center" id="pais">Bienvenido</h1>
+	    	<div id="texto" class="leap-interactive">
+	    	<h3 id="info" style="text-align: center; font-size: 20px;">
+	    		Con el estudio de esta lección, distinguirás las características y la utilidad de las fotografías aéreas e imágenes satelitales.
+	    	</h3>
+                <br/>
+                <center>
+                <img style="display: none;" id="imagen" src="" width="300" height="300">
+                    </center>
+                <center>
+                    <table id="tblMedios" style="display: none;">
+                        <tbody>
+                            <tr>
+                                <td style="text-align: center;"><h5>Avión</h5></td>
+                                <td style="text-align: center;"><h5>Satélite</h5></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;"><a href="#" onclick="getAvion();" class="leap-interactive">
+                        <img title="Avion" src="img/avion.png" width="150" height="150" class="leap-interactive">
+                    </a></td>       
+                                <td style="text-align: center;"><a href="#" onclick="getSatelite();" class="leap-interactive">
+                        <img title="Satélite" src="img/satelite.png" width="150" height="150" class="leap-interactive">
+                    </a></td>
+                            </tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr><td style="text-align: center; font-size: 14px;" colspan="2">Pista: Si quieres ver el mapa con los nombres de los países has click en el pequeño recuadro situado en la esquina inferior izquierda. Cámbialo una vez más para poder tomar la foto.</td> </tr>
+                            <tr><td style="text-align: center; font-size: 14px;" colspan="2">Te recuerdo que si solicitas ayuda para buscar el país se te sumará medio punto en caso de que aciertes.</td> </tr>
+                        </tbody>
+                    </table>                    
+                </center>
+                
+                <center>
+                    <table id="tabla">
+                        <tbody>
+                            <tr>
+                                <td style="text-align: center; font-size: 18px;">Fotografía aérea</td>
+                                <td></td>
+                                <td style="text-align: center; font-size: 18px;">Imagen satelital</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="getFotografia();" class="leap-interactive">
+                        <img title="Fotografía aérea" src="img/aerea.jpg" width="150" height="150" class="leap-interactive">
+                    </a></td>  
+                                <td width="10%"></td>
+                                <td><a href="#" onclick="getImagen();" class="leap-interactive">
+                        <img title="Imagen satelital" src="img/satelital.jpg" width="150" height="150" class="leap-interactive">
+                    </a></td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                    
+                    <br>
+                    <a id="btnJugar" onclick="getDinamica();" class="leap-interactive"><img id="imgBoton" src="img/jugar.png" width="100" height="70" class="leap-interactive"></a>
+                    <a id="btnBuscar" style="display: none;" onclick="buscar();" class="leap-interactive"><img src="img/buscar.png" width="75" height="70" class="leap-interactive"></a>
+                </center>
+	    	</div>
+	    </div>
+	</div>
+    <script>
+    LeapManager.init({
+      interactiveSelector:"a",
+      maxCursors:1,
+  });
+    LeapManager.cursorConfig.clickDelay = 3000;
+    console.log("Cursor Iniciado")
+  </script>
+
+    </body>
+</html>
